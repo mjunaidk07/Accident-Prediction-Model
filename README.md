@@ -87,7 +87,7 @@ The performance of the machine learning models was evaluated using Mean Absolute
 | Model | MAE | MSE | RMSE | R² Score |
 |:------|----:|----:|-----:|---------:|
 | Linear Regression | 0.3768 | 0.5991 | 0.7740 | 0.2388 |
-| Decision Tree Regression (`max_depth=5`) | 0.3448 | 0.5450 | 0.7382 | 0.3076 |
+| Decision Tree Regression (`max_depth=5`) | **0.3448** | **0.5450** | **0.7382** | **0.3076** |
 | Support Vector Regression (SVR) | - | - | - | - |
 
 **Current Best Model:** Decision Tree Regression (`max_depth=5`)
