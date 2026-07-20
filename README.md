@@ -87,8 +87,9 @@ The performance of the machine learning models was evaluated using Mean Absolute
 | Model | MAE | MSE | RMSE | R² Score |
 |:------|----:|----:|-----:|---------:|
 | Linear Regression | 0.3768 | 0.5991 | 0.7740 | 0.2388 |
+<<<<<<< HEAD
 | Decision Tree Regression (`max_depth=5`) | **0.3448** | **0.5450** | **0.7382** | **0.3076** |
-| Support Vector Regression (SVR) | - | - | - | - |
+
 
 **Current Best Model:** Decision Tree Regression (`max_depth=5`)
 
@@ -99,11 +100,6 @@ The tuned Decision Tree Regression model achieved the best performance among the
 The models were trained on historical accident data to estimate the expected number of injured people based on accident characteristics. Their performance was compared using standard regression metrics, and the best-performing model was selected for prediction.
 
 ## Future Improvements
-
-- Add weather information
-- Include time of day
-- Include road condition
-- Add traffic density
 - Deploy the model using Flask or Streamlit
 
 ## Author
