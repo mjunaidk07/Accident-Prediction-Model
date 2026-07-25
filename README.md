@@ -1,31 +1,31 @@
-# Accident Prediction Model
+# Road Accident Analysis using Machine Learning
 
 ## Overview
 
-This project predicts the expected number of injured people in road accidents using machine learning techniques. The model is trained on the Delhi Accident Dataset and learns patterns from historical accident records to estimate the number of injuries based on accident characteristics.
+This project applies machine learning techniques to analyze historical road accident data from Delhi (2007–2017). Two predictive tasks were performed using the same dataset:
+
+- **Regression:** Predict the expected number of injured people in a road accident.
+- **Classification:** Predict whether a road accident will result in one or more injuries.
+
+The project demonstrates the complete machine learning pipeline, including data cleaning, exploratory data analysis, feature engineering, preprocessing, model training, evaluation, comparison, and model serialization.
 
 ---
 
-## Features
+# Objectives
 
-- Data Cleaning
-- Exploratory Data Analysis (EDA)
-- Feature Engineering
-- Data Preprocessing
-- Linear Regression
-- Decision Tree Regression
-- Linear Support Vector Regression (LinearSVR)
-- Model Evaluation
-- Model Comparison
-- Prediction on New Data
+- Analyze historical road accident data.
+- Predict the expected number of injured persons using regression models.
+- Classify accidents as injury or non-injury cases using classification models.
+- Compare multiple machine learning algorithms.
+- Identify the best-performing models for both prediction tasks.
 
 ---
 
-## Dataset
+# Dataset
 
-The dataset contains historical road accident records from Delhi covering the years **2007–2017**.
+The dataset contains historical road accident records from **Delhi (2007–2017)**.
 
-### Features Used
+### Features
 
 - YEAR
 - DISTRICT
@@ -33,13 +33,28 @@ The dataset contains historical road accident records from Delhi covering the ye
 - VICTIM
 - TYPE OF ACCIDENT
 
-### Target Variable
+### Regression Target
 
-- # INJURED
+- **# INJURED**
+
+### Classification Target
+
+A binary target variable was created:
+
+| Value | Meaning |
+|------:|---------|
+| 0 | No injuries |
+| 1 | One or more injuries |
+
+Generated using:
+
+```python
+TARGET = (# INJURED > 0)
+```
 
 ---
 
-## Technologies Used
+# Technologies Used
 
 - Python
 - Pandas
@@ -47,12 +62,14 @@ The dataset contains historical road accident records from Delhi covering the ye
 - Matplotlib
 - Seaborn
 - Scikit-learn
+- CatBoost
+- Imbalanced-Learn
 - Joblib
 - Jupyter Notebook
 
 ---
 
-## Project Structure
+# Project Structure
 
 ```
 Accident-Prediction-Model/
@@ -78,21 +95,21 @@ Accident-Prediction-Model/
 
 ---
 
-## Installation
+# Installation
 
-Clone the repository:
+Clone the repository.
 
 ```bash
 git clone https://github.com/mjunaidk07/Accident-Prediction-Model.git
 ```
 
-Move into the project directory:
+Navigate to the project folder.
 
 ```bash
 cd Accident-Prediction-Model
 ```
 
-Install the required packages:
+Install the required dependencies.
 
 ```bash
 pip install -r requirements.txt
@@ -100,51 +117,63 @@ pip install -r requirements.txt
 
 ---
 
-## Usage
+# Usage
 
-Open the notebook:
+Launch Jupyter Notebook.
 
 ```bash
 jupyter notebook
 ```
 
-Navigate to:
+Open
 
 ```
 notebooks/Accident_Prediction.ipynb
 ```
 
-Run the notebook cells sequentially to reproduce the results.
+Run all notebook cells sequentially.
 
 ---
 
-## Workflow
+# Workflow
 
 1. Load Dataset
 2. Data Cleaning
 3. Exploratory Data Analysis (EDA)
 4. Feature Engineering
-5. Label Encoding
-6. Feature Scaling
+5. Data Preprocessing
+6. Label Encoding
 7. Train-Test Split
-8. Train Machine Learning Models
-9. Evaluate Models
-10. Compare Model Performance
-11. Save the Best Model
+8. Train Regression Models
+9. Train Classification Models
+10. Evaluate Models
+11. Compare Results
+12. Save the Best Model
 
 ---
 
-## Machine Learning Models
+# Regression Models
 
 - Linear Regression
-- Decision Tree Regression
-- Linear Support Vector Regression (LinearSVR)
+- Decision Tree Regressor
+- Linear Support Vector Regressor (LinearSVR)
 
 ---
 
-## Evaluation Metrics
+# Classification Models
 
-The models are evaluated using the following regression metrics:
+- Decision Tree Classifier
+- AdaBoost Classifier
+- Random Forest Classifier
+- Linear Support Vector Classifier (LinearSVC)
+- CatBoost Classifier
+- Stacking Classifier
+
+---
+
+# Regression Evaluation Metrics
+
+The regression models were evaluated using:
 
 - Mean Absolute Error (MAE)
 - Mean Squared Error (MSE)
@@ -153,60 +182,95 @@ The models are evaluated using the following regression metrics:
 
 ---
 
-## Results
+# Classification Evaluation Metrics
+
+The classification models were evaluated using:
+
+- Accuracy
+- Precision
+- Recall
+- F1 Score
+- G-Mean
+- Confusion Matrix
+- Classification Report
+
+---
+
+# Regression Results
 
 | Model | MAE | MSE | RMSE | R² Score |
 |:------|----:|----:|-----:|---------:|
 | Linear Regression | 0.3768 | 0.5991 | 0.7740 | 0.2388 |
-| Decision Tree Regression (`max_depth=5`) | **0.3448** | **0.5450** | **0.7382** | **0.3076** |
+| Decision Tree Regressor | **0.3448** | **0.5450** | **0.7382** | **0.3076** |
 | LinearSVR | 0.2320 | 0.6475 | 0.8047 | 0.1772 |
 
 ---
 
-## Best Performing Model
+# Classification Results
 
-**Decision Tree Regression (`max_depth=5`)**
-
-The Decision Tree Regression model achieved the highest R² Score and the lowest RMSE among the evaluated models. Limiting the tree depth to **5** reduced overfitting and improved generalization, making it the best-performing model for this dataset.
-
----
-
-## Saved Models
-
-The following files are generated after training:
-
-- `decision_tree_model.pkl` – Trained Decision Tree model
-- `scaler.pkl` – StandardScaler used for feature scaling
-- `label_encoders.pkl` – Label encoders for categorical features
-
-These files can be loaded later without retraining the model.
+| Model | Accuracy | F1 Score | G-Mean |
+|:------|---------:|---------:|--------:|
+| Decision Tree | **96.01%** | **97.37%** | **97.40%** |
+| AdaBoost | **96.01%** | **97.37%** | **97.40%** |
+| Random Forest | 95.25% | 96.91% | 94.92% |
+| Linear SVC | 94.18% | 96.21% | 93.29% |
+| CatBoost | 95.91% | 97.31% | 96.91% |
+| Stacking Classifier | 95.91% | 97.31% | 96.86% |
 
 ---
 
-## Conclusion
+# Best Performing Models
 
-Historical road accident data was analyzed and multiple regression models were trained to estimate the expected number of injured people.
+## Regression
 
-Among the evaluated models, **Decision Tree Regression** provided the best overall predictive performance and was selected as the final model. The project demonstrates the complete machine learning workflow, including data preprocessing, feature engineering, model training, evaluation, comparison, and model serialization for future deployment.
+**Decision Tree Regressor (max_depth = 5)**
 
----
-
-## Future Improvements
-
-- Develop a Streamlit web application for predictions
-- Perform hyperparameter tuning
-- Train on a larger and more recent dataset
-- Incorporate additional features such as weather conditions, road conditions, and traffic density
-- Deploy the application to the cloud
+The Decision Tree Regressor achieved the best regression performance by obtaining the highest R² Score while maintaining the lowest RMSE among the evaluated regression models.
 
 ---
 
-## Author
+## Classification
+
+**Decision Tree Classifier (max_depth = 5)**
+
+The Decision Tree Classifier achieved the best overall classification performance with:
+
+- Accuracy: **96.01%**
+- F1 Score: **97.37%**
+- G-Mean: **97.40%**
+
+AdaBoost achieved identical performance, while CatBoost and the Stacking Classifier produced comparable results but did not surpass the Decision Tree.
+
+---
+
+
+
+# Conclusion
+
+This project explored both **regression** and **classification** techniques for analyzing road accident data.
+
+For the regression task, three machine learning models were trained to estimate the expected number of injured people. Among them, the Decision Tree Regressor achieved the best predictive performance.
+
+For the classification task, six machine learning algorithms were evaluated to predict whether an accident would result in injuries. The Decision Tree Classifier and AdaBoost Classifier achieved the highest performance, with an accuracy of **96.01%**, an F1 Score of **97.37%**, and a G-Mean of **97.40%**. Although advanced ensemble methods such as CatBoost and Stacking Classifier delivered excellent results, they did not outperform the simpler Decision Tree model on this dataset.
+
+Overall, the project demonstrates an end-to-end machine learning workflow, including data preprocessing, feature engineering, model training, evaluation, comparison, and model serialization.
+
+---
+
+# Future Improvements
+
+- Train using larger and more recent datasets
+- Develop a Streamlit web application for real-time predictions
+- Deploy the trained model using Flask/FastAPI on a cloud platform
+
+---
+
+# Author
 
 **Mohammad Junaid**
 
 ---
 
-## License
+# License
 
-This project is intended for educational purposes.
+This project is intended for educational and research purposes.
